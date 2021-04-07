@@ -33,6 +33,7 @@ public class InitTask implements CommandLineRunner {
     public void run(String... args) throws Exception {
         initRedis();
         logger.info("StartToConsumeMsg--->");
+        // MQ消费
         mqConsumer.receive();
     }
 

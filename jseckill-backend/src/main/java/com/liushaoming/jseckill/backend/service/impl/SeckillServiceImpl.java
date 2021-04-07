@@ -147,9 +147,12 @@ public class SeckillServiceImpl implements SeckillService {
         long threadId = Thread.currentThread().getId();
 
         Jedis jedis = jedisPool.getResource();
+        // 库存key
         String inventoryKey = RedisKeyPrefix.SECKILL_INVENTORY + seckillId;
+        // 已购买key
         String boughtKey = RedisKeyPrefix.BOUGHT_USERS + seckillId;
 
+        // 获取库存
         String inventoryStr = jedis.get(inventoryKey);
         int inventory = Integer.valueOf(inventoryStr);
         if (inventory <= 0) {
@@ -157,6 +160,7 @@ public class SeckillServiceImpl implements SeckillService {
             logger.info("SECKILLSOLD_OUT. seckillId={},userPhone={}", seckillId, userPhone);
             throw new SeckillException(SeckillStateEnum.SOLD_OUT);
         }
+        // 判断 member 元素是否集合 key 的成员
         if (jedis.sismember(boughtKey, String.valueOf(userPhone))) {
             jedis.close();
             //重复秒杀

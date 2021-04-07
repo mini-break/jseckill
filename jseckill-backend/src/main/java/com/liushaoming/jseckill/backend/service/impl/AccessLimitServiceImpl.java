@@ -21,6 +21,7 @@ public class AccessLimitServiceImpl implements AccessLimitService {
      */
     @Override
     public boolean tryAcquireSeckill() {
+        // 一次请求获取一个token,也既每秒可以有10个请求
         return seckillRateLimiter.tryAcquire();
     }
 }

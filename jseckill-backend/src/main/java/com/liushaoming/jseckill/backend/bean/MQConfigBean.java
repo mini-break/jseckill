@@ -9,10 +9,22 @@ public class MQConfigBean {
      * RabbitMQ集群配置
      */
     private List<Address> addressList;
+    /**
+     * mq用户名
+     */
     private String username;
+    /**
+     * mq密码
+     */
     private String password;
     private boolean publisherConfirms;
+    /**
+     * mq虚拟目录
+     */
     private String virtualHost;
+    /**
+     * mq队列名
+     */
     private String queue;
 
     public List<Address> getAddressList() {

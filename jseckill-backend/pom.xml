@@ -108,6 +108,7 @@
         </dependency>
     </dependencies>
 
+    <!--刚开始导入时要去掉这个，要不然无法下载依赖的包-->
     <dependencyManagement>
         <dependencies>
             <dependency>

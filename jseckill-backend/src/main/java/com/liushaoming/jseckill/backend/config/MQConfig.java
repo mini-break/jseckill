@@ -68,6 +68,13 @@ public class MQConfig {
         return mqConfigBean;
     }
 
+    /**
+     * 定义MQ Connection bean
+     * @param mqConfigBean
+     * @return
+     * @throws IOException
+     * @throws TimeoutException
+     */
     @Bean("mqConnectionSeckill")
     public Connection mqConnectionSeckill(@Autowired MQConfigBean mqConfigBean) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();

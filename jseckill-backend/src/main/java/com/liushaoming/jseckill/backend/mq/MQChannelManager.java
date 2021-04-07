@@ -28,6 +28,7 @@ public class MQChannelManager {
     private ThreadLocal<Channel> localSendChannel = new ThreadLocal<Channel>() {
         public Channel initialValue() {
             try {
+                // 消息通道
                 Channel channelInst = connection.createChannel();
                 channelInst.queueDeclare(mqConfigBean.getQueue(), true, false, false, null);
                 return channelInst;
